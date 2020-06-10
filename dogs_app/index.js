@@ -1,7 +1,14 @@
 console.log("JavaScript loaded");
 
-baseURL = "http://localhost:3000";
-dogsURL = `${baseURL}/dogs`;
+const searchParams = new URLSearchParams(window.location.search);
+const searchName = searchParams.get("search");
+
+const baseURL = "http://localhost:3000";
+let dogsURL = `${baseURL}/dogs`;
+
+if (searchName) {
+  dogsURL = `${dogsURL}?search=${searchName}`;
+}
 
 const dogsSection = document.querySelector("section");
 
